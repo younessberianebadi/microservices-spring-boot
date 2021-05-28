@@ -50,8 +50,8 @@ public class MainController {
         // final ObjectMapper objectMapper = new ObjectMapper();
         // Player langs = objectMapper.readValue(s, Player.class);
 
-        Player player = restTemplate.getForObject(GET_ALL_PLAYERS_API, Player.class);
-        model.addAttribute("player", player);
+        Player players[] = restTemplate.getForObject(GET_ALL_PLAYERS_API, Player[].class);
+        model.addAttribute("players", players);
 
 
         return "list"; //view

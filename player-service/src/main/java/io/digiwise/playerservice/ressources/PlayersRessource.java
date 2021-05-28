@@ -17,12 +17,12 @@ import static io.digiwise.playerservice.models.Player.category.u10;
 @RequestMapping("/players")
 public class PlayersRessource {
     @RequestMapping("/{n}")
-    public /*List<Player>*/ Player getPlayers(@PathVariable("n") String m){
-        // List<Player> list = new ArrayList<>();
-        // list.add(new Player(1L,"Hassan", "Amir", moroccan, LocalDate.of(2011, 2, 01), male, u10, 60, 160));
-        // list.add(new Player(2L,"Amr", "Sarhan", moroccan, LocalDate.of(2011, 8, 01), male, u10, 63, 170));
-        // return list;
-        Player player = new Player(1L,"Hassan", "Amir", moroccan, LocalDate.of(2011, 2, 01), male, u10, 60, 160);
-        return player;
+    public List<Player> /*Player*/ getPlayers(@PathVariable("n") String m){
+        List<Player> list = new ArrayList<>();
+        list.add(new Player(1L,"Hassan", "Amir", moroccan, LocalDate.of(2011, 2, 01), male, u10, 60, 160));
+        list.add(new Player(2L,"Amr", "Sarhan", moroccan, LocalDate.of(2011, 8, 01), male, u10, 63, 170));
+        return list;
+        //Player player = new Player(1L,"Hassan", "Amir", moroccan, LocalDate.of(2011, 2, 01), male, u10, 60, 160);
+        //return player;
     }
 }

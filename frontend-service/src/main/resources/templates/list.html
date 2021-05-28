@@ -58,7 +58,7 @@
             <th>Pr&eacute;nom</th>
             <th>Nationalit&eacute;</th>
         </tr>
-        <tr onclick="document.getElementById('id01').style.display='block'" th:object="${player}">
+        <tr onclick="document.getElementById('id01').style.display='block'" th:each="player : ${players}">
             <td th:text="${player.fname}"></td>
             <td th:text="${player.lname}"></td>
             <td th:text="${player.nationality}"></td>
