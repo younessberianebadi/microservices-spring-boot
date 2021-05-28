@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Recherche</title>
+    <link type="text/css" rel="stylesheet" href="style.css" th:href="@{style.css}">
+    <link rel="icon" href="images/cubs.png" type="image/icon type">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+</head>
+<body>
+<div class="header">
+    <a href="#default" class="logo"><img src="images/cubs.png" width="60" height="60"></a>
+    <div class="header-right">
+        <a href="/index">Accueil</a>
+        <a class="active" href="#">Recherche</a>
+        <a href="#">Matches</a>
+        <a href="#">Tests</a>
+    </div>
+</div>
+<div id="wrapper">
+    <h1>Recherche Joueur</h1>
+    <form>
+        <div class="search-container">
+            <input type="text" class="search" placeholder="Matricule">
+            <input type="text" class="date-from" placeholder="Nom">
+            <input type="text" class="date-to" placeholder="Pr&eacute;nom">
+            <button type="submit" id="button">Recherche</button>
+        </div>
+    </form>
+    <table id="myTable">
+        <tr class="header">
+            <th style="width:20%;">Matricule</th>
+            <th style="width:40%;">Nom</th>
+            <th style="width:40%;">Pr&eacute;nom</th>
+        </tr>
+        <tr onclick="window.location='#';" style="cursor: pointer;" th:each = "player : ${players}">
+            <td th:text = "${player.id}"></td>
+            <td th:text = "${player.lname}"></td>
+            <td th:text = "${player.fname}"></td>
+        </tr>
+    </table>
+</div>
+<div class="footer">
+    <p> &copy; 2021 DIGIWISE - Tous droits r&eacute;serv&eacute;s.</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List des joueurs</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/style/style.css}">
+    <link rel="icon" th:href="@{/images/cubs.png}" type="image/icon type">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type="text/css">
+    .abscence {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: #474e5d;
+    padding-top: 50px;
+  }
+  .abscence-content{
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+  .close {
+    position: absolute;
+    right: 35px;
+    top: 15px;
+    font-size: 40px;
+    font-weight: bold;
+    color: #f1f1f1;
+  }
+  .close:hover,
+  .close:focus {
+    color: #f44336;
+    cursor: pointer;
+  }
+  </style>
+</head>
+<body>
+<div class="header">
+    <a href="#default" class="logo"><img th:src="@{/images/cubs.png}" width="60" height="60"></a>
+    <div class="header-right">
+        <a class="active" href="#home">Accueil</a>
+        <a href="#">Recherche</a>
+        <a href="#">Matches</a>
+        <a href="#">Tests</a>
+    </div>
+</div>
+<div id="wrapper">
+    <h1>Liste des joueurs</h1>
+    <table id="players">
+        <tr>
+            <th>Nom</th>
+            <th>Pr&eacute;nom</th>
+            <th>Nationalit&eacute;</th>
+        </tr>
+        <tr onclick="document.getElementById('id01').style.display='block'" th:object="${player}">
+            <td th:text="${player.fname}"></td>
+            <td th:text="${player.lname}"></td>
+            <td th:text="${player.nationality}"></td>
+        </tr>
+    </table>
+    <div class="abscence" id="id01">
+        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+        <form class="abscence-content">
+            <h1>Saisir Abscence</h1>
+            <label for="absdate"><b>Date</b></label>
+            <input type="date" id="absdate" name="absdate" required>
+        </form>
+    </div>
+</div>
+<div class="footer">
+    <p> &copy; 2021 DIGIWISE - Tous droits r&eacute;serv&eacute;s.</p>
+</div>
+</body>
+</html>

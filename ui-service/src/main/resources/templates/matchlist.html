@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Calendrier des matches</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link type="text/css" rel="stylesheet" href="style.css" th:href="@{style.css}">
+    <link rel="icon" href="images/cubs.png" type="image/icon type">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<div class="header">
+    <a href="#default" class="logo"><img src="images/cubs.png" width="60" height="60"></a>
+    <div class="header-right">
+        <a class="active" href="#home">Accueil</a>
+        <a href="#">Recherche</a>
+        <a href="#">Matches</a>
+        <a href="#">Tests</a>
+    </div>
+</div>
+<div id="wrapper">
+    <h1>Calendrier des matches</h1>
+    <h3>Mai</h3>
+    <table id="myTable" >
+        <tr class="header">
+            <th>Date</th>
+            <th>Heure</th>
+            <th>Type</th>
+            <th>Contre</th>
+            <th>R&eacute;sultat</th>
+            <th>Score</th>
+        </tr>
+        <tr onclick="window.location='#';" style="cursor: pointer;" th:each = "match : ${matches}">
+            <td th:text = "${match.date}"></td>
+            <td th:text = "${match.time}"></td>
+            <td th:text = "${match.type}"></td>
+            <td th:text = "${match.adversary}"></td>
+            <td th:text = "${match.result}"></td>
+            <td th:text = "${match.score}"></td>
+        </tr>
+    </table>
+
+</div>
+<div class="footer">
+    <p> &copy; 2021 DIGIWISE - Tous droits r&eacute;serv&eacute;s.</p>
+</div>
+</body>
+</html>

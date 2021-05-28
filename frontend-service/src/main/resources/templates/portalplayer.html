@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Joueur</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/style/style.css}">
+    <link rel="icon" th:href="@{/images/cubs.png}" type="image/icon type">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <div class="header">
+        <a href="#default" class="logo"><img th:src="@{/images/cubs.png}" width="60" height="60"></a>
+        <div class="header-right">
+            <a class="active" href="#home">Accueil</a>
+            <a href="#">Recherche</a>
+            <a href="#">Matches</a>
+            <a href="#">Tests</a>
+        </div>
+    </div>
+    <div id="wrapper">
+        <h1>Bonjour Joueur!</h1>
+        <div class="card">
+            <img th:src="@{/images/test.png}" alt="Avatar" width="50" height="50">
+            <div class="container">
+                <p>Test</p>
+            </div>
+        </div>
+        <div class="card">
+            <img th:src="@{/images/bulletin.png}" alt="Avatar" width="50" height="50">
+            <div class="container">
+                <p>Bulletin</p>
+            </div>
+        </div>
+        <div class="card">
+            <img th:src="@{/images/result_game.png}" alt="Avatar" width="50" height="50">
+            <div class="container">
+                <p>R&eacute;sultats des matches</p>
+            </div>
+        </div>
+        <div class="card">
+            <img th:src="@{/images/calendar.png}" alt="Avatar" width="50" height="50">
+            <div class="container">
+                <p>Consultation du calendrier</p>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <p> &copy; 2021 DIGIWISE - Tous droits r&eacute;serv&eacute;s.</p>
+    </div>
+</body>
+</html>

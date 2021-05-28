@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Plannifier un match</title>
+    <link rel="stylesheet" type="text/css" href="styles/admin.css">
+    <link rel="icon" href="images/cubs.png" type="image/icon type">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type="text/css">
+    .container {
+  padding: 16px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password], input[type=date], input[type=number], input[type=time], select {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus, input[type=date]:focus, input[type=number], input[type=time]:focus, select {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Overwrite default styles of hr */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for the submit button */
+.registerbtn {
+  background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+  color: #000;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.registerbtn:hover {
+  opacity: 1;
+}
+
+/* Add a blue text color to links */
+a {
+  color: dodgerblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+  background-color: #f1f1f1;
+  text-align: center;
+}
+  </style>
+</head>
+<body>
+<div class="header">
+    <a href="#default" class="logo"><img src="images/cubs.png" width="60" height="60"></a>
+    <div class="header-right">
+        <a href="#home">Accueil</a>
+        <a href="#">Recherche</a>
+        <a class="active" href="#">Matches</a>
+        <a href="#">Tests</a>
+    </div>
+</div>
+<div id="wrapper">
+    <h1>Plannifier un match</h1>
+    <form th:object="${match}" th:action="@{save}" action="#" method="post">
+        <div class="container">
+            <label for="lname"><b>Date</b></label>
+            <input type="date" id="date" name="date" th:field="*{date}" required>
+
+            <label for="lname"><b>Heure</b></label>
+            <input type="time" id="date" name="date" th:field="*{date}" min="09:00" max="20:00" required>
+
+            <label for="category"><b>Cat&eacute;gorie</b></label>
+            <select id="category" name="category" required>
+                <option value="u8">U8</option>
+                <option value="u10">U10</option>
+                <option value="u12">U12</option>
+                <option value="u14">U14</option>
+                <option value="u16">U16</option>
+            </select>
+
+            <label for="lname"><b>Adversaire</b></label>
+            <input type="text" id="adversary" name="adversary" required>
+
+            <label for="type"><b>Type</b></label>
+            <select id="type" name="type">
+                <option value="friendly">Amical</option>
+                <option value="league">Championnat</option>
+                <option value="cup">Coupe</option>
+            </select>
+
+            <label for="result"><b>R&eacute;sultat</b></label>
+            <select id="result" name="result">
+                <option value="won">Gagn&eacute;</option>
+                <option value="lost">Perdu</option>
+                <option value="draw">Egal</option>
+                <option value="notplayed">Pas encore jou&eacute;</option>
+            </select>
+
+            <label for="score"><b>Score</b></label>
+            <input type="number" name="hometeam"  style="width: 50%; display: block;" min="0">
+            <input type="number" name="awayteam" style="width: 50%; display: inline-block;" min="0">
+
+
+
+            <hr>
+
+            <button type="submit" class="registerbtn">Plannifier un match</button>
+        </div>
+
+    </form>
+
+</div>
+<div class="footer">
+    <p> &copy; 2021 DIGIWISE - Tous droits r&eacute;serv&eacute;s.</p>
+</div>
+</body>
+</html>
