@@ -64,39 +64,67 @@ a {
 <div class="header">
     <a href="#default" class="logo"><img th:src="@{images/cubs.png}" width="60" height="60"></a>
     <div class="header-right">
-        <a href="#home">Accueil</a>
+        <a th:href="@{/list}">Accueil</a>
         <a href="#">Recherche</a>
-        <a class="active" href="#">Matches</a>
+        <a th:href="@{/fixtures}" class="active" href="#">Matches</a>
         <a href="#">Tests</a>
     </div>
 </div>
 <div id="wrapper">
     <h1>Plannifier un match</h1>
-    <form action="#">
+    <form action="#" th:object="${match}" th:action="@{/saveMatch}" method="post">
         <div class="container">
-            <label for="date"><b>Date</b></label>
-            <input type="date" id="date" name="date" required>
 
+            <label for="date"><b>Date</b></label>
+            <input type="date" id="date" th:field="*{date}" name="date" required>
+            <!--
             <label for="time"><b>Heure</b></label>
-            <input type="time" id="time" name="time" min="09:00" max="20:00" required>
+            <input type="time" id="time" name="time" min="09:00" max="20:00">
+
+             -->
+
+
+
+            <label for="category"><b>Lieu</b></label>
+            <input type="text" id="adversary" th:field="*{lieu}" name="adversary" >
+
+            <label for="category"><b>Type</b></label>
+            <select th:field="*{type}">
+                <option th:value="'Amical'" th:text="amical"></option>
+                <option th:value="'Ligue'" th:text="Ligue"></option>
+                <option th:value="'Coupe'" th:text="Coupe"></option>
+            </select>
+
 
             <label for="category"><b>Cat&eacute;gorie</b></label>
-            <select id="category" name="category" required>
-                <option value="u8">U8</option>
-                <option value="u10">U10</option>
-                <option value="u12">U12</option>
-                <option value="u14">U14</option>
-                <option value="u16">U16</option>
+            <select th:field="*{categorie}">
+                <option th:value="'U6'" th:text="U6"></option>
+                <option th:value="'U8'" th:text="U8"></option>
+                <option th:value="'U10'" th:text="U10"></option>
+                <option th:value="'U12'" th:text="U12"></option>
+            </select>
+
+
+            <label for="category"><b>Adversaire</b></label>
+            <input type="text" id="adversary" th:field="*{adversary}" name="adversary" >
+
+            <!--
+            <select th:field="*{categirie}" id="category" name="category" required>
+                <option th:value="U8">U8</option>
+                <option th:value="U10">U10</option>
+                <option th:value="U12">U12</option>
+                <option th:value="U14">U14</option>
+                <option th:value="U16">U16</option>
             </select>
 
             <label for="adversary"><b>Adversaire</b></label>
-            <input type="text" id="adversary" name="adversary" required>
+            <input type="text" id="adversary" name="adversary" >
 
             <label for="type"><b>Type</b></label>
-            <select id="type" name="type">
-                <option value="friendly">Amical</option>
-                <option value="league">Championnat</option>
-                <option value="cup">Coupe</option>
+            <select th:field="*{type}" id="type" name="type">
+                <option th:value="Amicale">Amical</option>
+                <option th:value="Ligue">Championnat</option>
+                <option th:value="Coupe">Coupe</option>
             </select>
 
             <label for="result"><b>R&eacute;sultat</b></label>
@@ -112,10 +140,10 @@ a {
             <input type="number" name="awayteam" style="width: 50%; display: inline-block;" min="0">
 
 
-
+            -->
             <hr>
 
-            <button type="submit" class="registerbtn">Plannifier un match</button>
+            <input type="submit" class="registerbtn" value="Plannifier un match"></input>
         </div>
 
     </form>

@@ -6,23 +6,26 @@
     <link rel="stylesheet" type="text/css" th:href="@{/style/style.css}">
     <link rel="icon" th:href="@{/images/cubs.png}" type="image/icon type">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
 <div class="header">
     <a href="#default" class="logo"><img th:src="@{/images/cubs.png}" width="60" height="60"></a>
     <div class="header-right">
-        <a href="#home">Accueil</a>
+        <a th:href="@{/list}">Accueil</a>
         <a class="active" href="#">Recherche</a>
-        <a href="#">Matches</a>
-        <a href="#">Tests</a>
+        <a th:href="@{/fixtures}">Matches</a>
+        <a th:href="@{/listest}">Tests</a>
     </div>
 </div>
-<form>
+<form method="post" th:action="@{/searchByName}">
     <div class="search-container">
-        <input type="text" class="search" placeholder="Matricule">
-        <input type="text" class="date-from" placeholder="Nom">
+        <input type="text" th:object="${name}" class="search" placeholder="Nom">
+        <!--
+        <input type="text" class="date-from" placeholder="Matricule">
         <input type="text" class="date-to" placeholder="Pr&eacute;nom">
-        <button type="submit" id="button">Recherche</button>
+        -->
+        <input type="submit" id="button" value="Recherche par nom">
     </div>
 </form>
 <table id="myTable">
@@ -31,10 +34,10 @@
         <th style="width:40%;">Nom</th>
         <th style="width:40%;">Pr&eacute;nom</th>
     </tr>
-    <tr onclick="window.location='#';" style="cursor: pointer;">
-        <td>1165</td>
-        <td>El Alaoui</td>
-        <td>Rayan</td>
+    <tr onclick="window.location='#';" style="cursor: pointer;" >
+        <td id="matricule-column"></td>
+        <td id="name-column"></td>
+        <td id="fname-column"></td>
     </tr>
 </table>
 </div>

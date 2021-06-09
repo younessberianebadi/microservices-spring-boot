@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tests</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/style/style.css}">
+    <link rel="icon" th:href="@{/images/cubs.png}" type="image/icon type">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type="text/css">
+    .abscence {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: #474e5d;
+    padding-top: 50px;
+  }
+  .abscence-content{
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+  .close {
+    position: absolute;
+    right: 35px;
+    top: 15px;
+    font-size: 40px;
+    font-weight: bold;
+    color: #f1f1f1;
+  }
+  .close:hover,
+  .close:focus {
+    color: #f44336;
+    cursor: pointer;
+  }
+  .registerbtn {
+  background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+  color: #000;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.registerbtn:hover {
+  opacity: 1;
+}
+
+  </style>
+
+</head>
+<body>
+<div class="header">
+    <a href="#default" class="logo"><img th:src="@{/images/cubs.png}" width="60" height="60"></a>
+</div>
+<div id="wrapper">
+    <h1>Bienvenue!</h1>
+    <button class="registerbtn"><a th:href="@{/admin}">Admin</a></button>
+    <button class="registerbtn"><a th:href="@{/educator}">&Eacute;ducateur</a></button>
+    <button class="registerbtn"><a th:href="@{/player}">Joueur</a></button>
+    <button class="registerbtn"><a th:href="@{/tutor}">Tuteur</a></button>
+
+</div>
+<div class="footer">
+    <p> &copy; 2021 DIGIWISE - Tous droits r&eacute;serv&eacute;s.</p>
+</div>
+</body>
+</html>

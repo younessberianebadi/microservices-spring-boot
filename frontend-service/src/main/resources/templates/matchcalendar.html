@@ -6,40 +6,45 @@
     <link rel="stylesheet" type="text/css" th:href="@{/style/style.css}">
     <link rel="icon" th:href="@{/images/cubs.png}" type="image/icon type">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+          .registerbtn {
+  background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+  color: #000;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.registerbtn:hover {
+  opacity: 1;
+}
+    </style>
 </head>
 <body>
 <div class="header">
     <a href="#default" class="logo"><img th:src="@{/images/cubs.png}" width="60" height="60"></a>
     <div class="header-right">
-        <a href="#home">Accueil</a>
+        <a th:href="@{/list}">Accueil</a>
         <a href="#">Recherche</a>
         <a class="active" href="#">Matches</a>
-        <a href="#">Tests</a>
+        <a th:href="@{/listest}">Tests</a>
     </div>
 </div>
 <div id="wrapper">
     <h1>Calendrier des matches</h1>
-    <h3>Mai</h3>
-    <table id="myTable">
-        <tr class="header">
-            <th>Date</th>
-            <th>Heure</th>
-            <th>Type</th>
-            <th>Contre</th>
-            <th>R&eacute;sultat</th>
-            <th></th>
-            <th></th>
-        </tr>
-        <tr onclick="window.location='#';" style="cursor: pointer;">
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-    </table>
+    <div th:each="match :${matches}" class="card">
+        <img src="/images/calendar.png" alt="Avatar" width="25" height="25">
+        <div class="container">
+            <p th:text="*{match.date}"></p>
+            <h2><b th:text="*{match.categorie}"></b> VS <b th:text="*{match.adversary}"></b></h2>
+            <h4 th:text="*{match.lieu}"></h4>
+            <h4 th:text="*{match.type}"></h4>
+        </div>
+    </div>
+    <button class="registerbtn"><a th:href="@{/insertmatch}">Plannifier un match</a></button>
 
 </div>
 <div class="footer">

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Profiles</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/style/style.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="icon" href="/images/cubs.png" type="image/icon type">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type="text/css">
+    .container {
+  padding: 16px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password], input[type=date], input[type=number], select {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus, input[type=date]:focus, input[type=number], select {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Overwrite default styles of hr */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for the submit button */
+.registerbtn {
+  background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+  color: #000;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.registerbtn:hover {
+  opacity: 1;
+}
+
+/* Add a blue text color to links */
+a {
+  color: dodgerblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+  background-color: #f1f1f1;
+  text-align: center;
+}
+  </style>
+</head>
+<body>
+<div class="header">
+    <a href="#default" class="logo"><img src="/images/cubs.png" width="60" height="60"></a>
+    <div class="header-right">
+        <a class="active" th:href="@{/list}">Accueil</a>
+        <a href="#">Recherche</a>
+        <a th:href="@{/fixtures}">Matches</a>
+        <a th:href="@{/listest}">Tests</a>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row" style="border-radius: 20px; background-color: #DCDCDC; padding: 10px 0px;">
+        <div class="col-md-4">
+            <img th:if="${joueur.sexe == T(io.digiwise.frontendservice.Joueur.sexe).Male}" th:src="@{/images/boy.png}" height="100" width="100" style="border-radius: 50%" />
+            <img th:unless="${joueur.sexe == T(io.digiwise.frontendservice.Joueur.sexe).Male}" th:src="@{/images/girl.png}" height="100" width="100" style="border-radius: 50%"/>
+        </div>
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-md-4">
+                    Nom
+                </div>
+                <div class="col-md-8" th:text="': ' + ${joueur.nom}">
+                    :
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    Pr&eacute;nom
+                </div>
+                <div class="col-md-8" th:text="': ' + ${joueur.prenom}">
+                    :
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    Age
+                </div>
+                <div class="col-md-8" th:text="': ' + ${joueur.age}">
+                    :
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    Cat&eacute;gorie
+                </div>
+                <div class="col-md-8" th:text="': ' + ${joueur.categorie}">
+                    :
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    Nationalit&eacute;
+                </div>
+                <div class="col-md-8" th:text="': ' + ${joueur.nationalite}">
+                    :
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    Taille
+                </div>
+                <div class="col-md-8" th:text="': ' + ${joueur.taille}">
+                    :
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    Poids
+                </div>
+                <div class="col-md-8" th:text="': ' + ${joueur.poids}">
+                    :
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    Poste
+                </div>
+                <div class="col-md-8" th:text="': ' + ${joueur.posteJoueur}">
+                    :
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    Num&eacute;ro de maillot
+                </div>
+                <div class="col-md-8" th:text="': ' + ${joueur.numeroMaillot}">
+                    :
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="wrapper">
+    <button class="registerbtn"><a th:href="@{/list}">&lt; Retour</a></button>
+</div>
+<div class="footer">
+    <p> &copy; 2021 DIGIWISE - Tous droits r&eacute;serv&eacute;s.</p>
+</div>
+</body>
+</html>

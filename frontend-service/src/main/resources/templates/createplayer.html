@@ -64,22 +64,68 @@ a {
 <div class="header">
     <a href="#default" class="logo"><img src="images/cubs.png" width="60" height="60"></a>
     <div class="header-right">
-        <a class="active" href="#home">Accueil</a>
+        <a class="active" th:href="@{/list}">Accueil</a>
         <a href="#">Recherche</a>
-        <a href="#">Matches</a>
-        <a href="#">Tests</a>
+        <a th:href="@{/fixtures}">Matches</a>
+        <a th:href="@{/listest}">Tests</a>
     </div>
 </div>
 <div id="wrapper">
     <h1>Ajouter un joueur</h1>
-    <form action="/action_page.php">
+    <form th:object="${joueur}" th:action="@{/save}" method="post">
         <div class="container">
-            <label for="lname"><b>Nom</b></label>
-            <input type="text" placeholder="Entrer le nom" name="name" id="name" required>
+            <label ><b>Nom</b></label>
+            <input type="text" placeholder="Entrer le nom" name="name" id="name" th:field="*{nom}" required>
 
             <label for="fname"><b>Pr&eacute;nom</b></label>
-            <input type="text" placeholder="Entrer le pr&eacute;nom" name="fname" id="fname" required>
+            <input type="text" placeholder="Entrer le pr&eacute;nom" name="fname" id="fname" th:field="*{prenom}" required>
 
+            <label for="fname"><b>Matricule</b></label>
+            <input type="number" placeholder="Entrer le pr&eacute;nom" th:field="*{matricule}" required>
+
+            <label for="fname"><b>Age</b></label>
+            <input type="number" placeholder="Entrer le pr&eacute;nom" th:field="*{age}" required>
+
+            <label for="sexe"><b>Sexe</b></label>
+            <select id="sexe" name="sexe" th:field="*{sexe}" required>
+                <option th:value="'Female'">F&eacute;minin</option>
+                <option th:value="'Male'">Masculin</option>
+            </select>
+
+            <label for="fname"><b>Taille</b></label>
+            <input type="number" placeholder="Entrer le pr&eacute;nom" th:field="*{taille}" required>
+
+            <label for="fname"><b>Poids</b></label>
+            <input type="number" placeholder="Entrer le pr&eacute;nom" th:field="*{poids}" required>
+
+            <label for="fname"><b>Nationalite</b></label>
+            <select id="sexe" name="sexe" th:field="*{nationalite}" required>
+                <option th:value="'Moroccan'">Marocain</option>
+                <option th:value="'Foreigner'">&Eacute;tranger</option>
+            </select>
+
+            <label for="fname"><b>Categorie</b></label>
+            <select th:field="*{categorie}">
+                <option th:value="'U6'" th:text="U6"></option>
+                <option th:value="'U8'" th:text="U8"></option>
+                <option th:value="'U10'" th:text="U10"></option>
+                <option th:value="'U12'" th:text="U12"></option>
+                <option th:value="'U14'" th:text="U14"></option>
+                <option th:value="'U16'" th:text="U16"></option>
+            </select>
+
+            <label for="poste"><b>Poste</b></label>
+            <select id="poste" name="sexe" th:field="*{posteJoueur}" required>
+                <option th:value="'Attacker'">Attaquant(e)</option>
+                <option th:value="'Defender'">D&eacute;fenseur(se)</option>
+                <option th:value="'Mildfielder'">Milieu</option>
+                <option th:value="'Goalkeeper'">Gardien(ne)</option>
+            </select>
+
+            <label for="fname"><b>Maillot</b></label>
+            <input type="number" placeholder="Entrer le pr&eacute;nom" th:field="*{numeroMaillot}" required>
+
+            <!--
             <label for="birthday"><b>Date de naissance</b></label>
             <input type="date" id="birthday" name="birthday" required>
 
@@ -116,9 +162,10 @@ a {
 
             <label for="psw-repeat"><b>R&eacute;entrer le mot de passe</b></label>
             <input type="password" placeholder="R&eacute;p&eacute;ter le mot de passe" name="psw-repeat" id="psw-repeat" required>
+            -->
             <hr>
 
-            <button type="submit" class="registerbtn">Cr&eacute;er le compte du joueuer</button>
+            <button type="submit" class="registerbtn" value="Save">Cr&eacute;er le compte du joueuer</button>
         </div>
 
     </form>

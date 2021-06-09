@@ -12,8 +12,8 @@
     <div class="header-right">
         <a class="active" href="#home">Accueil</a>
         <a href="#">Recherche</a>
-        <a href="#">Matches</a>
-        <a href="#">Tests</a>
+        <a th:href="@{/fixtures}">Matches</a>
+        <a th:href="@{/listest}">Tests</a>
     </div>
 </div>
 <div id="wrapper">
@@ -27,7 +27,7 @@
     <div class="card">
         <img th:src="@{/images/test.png}" alt="Avatar" width="50" height="50">
         <div class="container">
-            <p>Saisie Test</p>
+            <a th:href="@{/insertest}" style="color: black">Saisie Test</a>
         </div>
     </div>
     <div class="card">
@@ -39,7 +39,7 @@
     <div class="card">
         <img th:src="@{/images/player.png}" alt="Avatar" width="50" height="50">
         <div class="container">
-            <a th:href="@{/list}"> Liste des joueurs</a>
+            <a style="color: black" th:href="@{/list}"> Liste des joueurs</a>
         </div>
     </div>
     <div class="card">
@@ -69,7 +69,7 @@
     <div class="card">
         <img th:src="@{/images/fixtures.png}" alt="Avatar" width="50" height="50">
         <div class="container">
-            <p>Calendrier des matches</p>
+            <a th:href="@{/fixtures}" style="color: black">Calendrier des matches</a>
         </div>
     </div>
     <div class="card">

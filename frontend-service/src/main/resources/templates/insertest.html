@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Ajouter un test</title>
-    <link rel="stylesheet" type="text/css" th:href="@{styles/admin.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/style/style.css}">
     <link rel="icon" href="images/cubs.png" type="image/icon type">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style type="text/css">
@@ -12,7 +12,7 @@
 }
 
 /* Full-width input fields */
-input[type=text], input[type=password], input[type=date], input[type=number], select {
+input[type=text], input[type=password], input[type=date], input[type=number], select, textarea {
   width: 100%;
   padding: 15px;
   margin: 5px 0 22px 0;
@@ -21,7 +21,7 @@ input[type=text], input[type=password], input[type=date], input[type=number], se
   background: #f1f1f1;
 }
 
-input[type=text]:focus, input[type=password]:focus, input[type=date]:focus, input[type=number], select {
+input[type=text]:focus, input[type=password]:focus, input[type=date]:focus, input[type=number], select, textarea {
   background-color: #ddd;
   outline: none;
 }
@@ -64,32 +64,39 @@ a {
 <div class="header">
     <a href="#default" class="logo"><img src="images/cubs.png" width="60" height="60"></a>
     <div class="header-right">
-        <a class="active" href="#home">Accueil</a>
+        <a th:href="@{/list}">Accueil</a>
         <a href="#">Recherche</a>
-        <a href="#">Matches</a>
-        <a href="#">Tests</a>
+        <a th:href="@{/fixtures}">Matches</a>
+        <a class="active" href="#">Tests</a>
     </div>
 </div>
 <div id="wrapper">
     <h1>Ajouter un test</h1>
-    <p>Test n&deg;<b id="testn">11</b> pour joueur <b id="player">Rayan</b></p>
-    <form action="/action_page.php">
-        <h2>Qualit&eacute;s mentales</h2>
+    <form th:object="${test}" th:action="@{/saveTest}" method="post">
         <div class="container">
-            <label for="lname"><b>Confiance en soi</b></label>
-            <input type="number" min="1" max="10" step="0.5" value="1">
+            <label for="date"><b>Date</b></label>
+            <input type="date" name="date" id="date" th:field="*{date}">
 
-            <label for="lname"><b>Go&ucirc;t de l'effort </b></label>
-            <input type="number" min="1" max="10" step="0.5" value="1">
+            <label for="fullname"><b>Pour joueur</b></label>
+            <select id="fullname" th:field="*{player_name}">
+                <option th:each="player : ${players}" th:text="${player.prenom + ' ' + player.nom}" th:value="${player.prenom + ' ' + player.nom}"></option>
+            </select>
 
-            <label for="lname"><b>Concentration</b></label>
-            <input type="number" min="1" max="10" step="0.5" value="1">
+            <label for="type"><b>Type</b></label>
+            <select id="type" th:field="*{test_type}">
+                <option th:value="QM">Qualit&eacute;s Mentales</option>
+                <option th:value="HT">Habilet&eacute;s Techniques</option>
+                <option th:value="QP">Qualités Physiques</option>
+            </select>
 
-            <label for="lname"><b>Application</b></label>
-            <input type="number" min="1" max="10" step="0.5" value="1">
+            <label for="name"><b>Nom d'entrainement</b></label>
+            <input type="text" id="name" th:field="*{test_name}">
 
-            <label for="lname"><b>Joueur &Eacute;quipier</b></label>
-            <input type="number" min="1" max="10" step="0.5" value="1">
+            <label for="result"><b>R&eacute;sultat</b></label>
+            <input type="number" min="0" max="10" step="1" id="result" th:field="*{test_result}">
+
+            <label for="comment"><b>Commentaire</b></label>
+            <textarea id="comment" rows="5" placeholder="Commentaire//" th:field="*{comment}"></textarea>
 
             <hr>
 

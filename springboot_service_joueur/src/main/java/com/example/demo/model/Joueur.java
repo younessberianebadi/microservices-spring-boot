@@ -10,12 +10,40 @@ import javax.persistence.Table;
 @Entity
 @Table(name="joueurs")
 public class Joueur {
-	
-	
+
+
+
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
-	
+
+	enum position{
+		Attacker,
+		Defender,
+		Mildfielder,
+		Goalkeeper
+	}
+
+	enum sexe{
+		Male,
+		Female
+	}
+
+	enum categorie{
+		U6,
+		U8,
+		U10,
+		U12,
+		U14,
+		U16
+	}
+
+	enum nationality{
+		Moroccan,
+		Foreigner
+	}
+
 	@Column(name="nom")
     private String nom;
 	
@@ -29,7 +57,7 @@ public class Joueur {
     private int age;
 	
 	@Column(name="sexe")
-	private char sexe;
+	private sexe sexe;
 	
 	@Column(name="taille")
     private float taille;
@@ -38,13 +66,13 @@ public class Joueur {
     private float poids;
 	
 	@Column(name="nationalite")
-    private String nationalite;
+    private nationality nationalite;
 	
 	@Column(name="categorie")
-    private String categorie;
+    private categorie categorie;
 	
 	@Column(name="poste_joueur")
-    private String posteJoueur;
+    private position posteJoueur;
 	
 	@Column(name="numero_maillot")
     private int numeroMaillot;
@@ -55,8 +83,8 @@ public class Joueur {
 	public Joueur() {
 		super();
 	}
-	public Joueur(String nom, String prenom, int matricule, int age, char sexe, float taille, float poids,
-			String nationalite, String categorie, String posteJoueur, int numeroMaillot) {
+	public Joueur(String nom, String prenom, int matricule, int age, sexe sexe, float taille, float poids,
+			nationality nationalite, categorie categorie, position posteJoueur, int numeroMaillot) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
@@ -100,10 +128,10 @@ public class Joueur {
 	public void setAge(int age) {
 		this.age = age;
 	}
-	public char getSexe() {
+	public sexe getSexe() {
 		return sexe;
 	}
-	public void setSexe(char sexe) {
+	public void setSexe(sexe sexe) {
 		this.sexe = sexe;
 	}
 	public float getTaille() {
@@ -118,22 +146,22 @@ public class Joueur {
 	public void setPoids(float poids) {
 		this.poids = poids;
 	}
-	public String getNationalite() {
+	public nationality getNationalite() {
 		return nationalite;
 	}
-	public void setNationalite(String nationalite) {
+	public void setNationalite(nationality nationalite) {
 		this.nationalite = nationalite;
 	}
-	public String getCategorie() {
+	public categorie getCategorie() {
 		return categorie;
 	}
-	public void setCategorie(String categorie) {
+	public void setCategorie(categorie categorie) {
 		this.categorie = categorie;
 	}
-	public String getPosteJoueur() {
+	public position getPosteJoueur() {
 		return posteJoueur;
 	}
-	public void setPosteJoueur(String posteJoueur) {
+	public void setPosteJoueur(position posteJoueur) {
 		this.posteJoueur = posteJoueur;
 	}
 	public int getNumeroMaillot() {

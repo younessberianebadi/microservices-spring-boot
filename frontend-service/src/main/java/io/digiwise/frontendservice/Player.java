@@ -7,8 +7,7 @@ import java.time.LocalDate;
 public class Player {
     public enum sexe{
         male,
-        female,
-        other
+        female
     }
 
     public enum nationality{

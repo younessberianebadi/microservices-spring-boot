@@ -39,11 +39,10 @@ public class JoueurController {
 	// get player by id
 	@GetMapping("joueurs/{id}")
 	public ResponseEntity<Joueur>  getJoueurById(@PathVariable(value="id") Long joueurId)
-		throws ResourceNotFoundException{
+			throws ResourceNotFoundException{
 		Joueur joueur=joueurRepository.findById(joueurId)
 				.orElseThrow(()-> new ResourceNotFoundException("Joueur not found  for this id::" + joueurId ));
 		return ResponseEntity.ok().body(joueur);
-	
 	}
 
 	// save player
@@ -86,7 +85,7 @@ public class JoueurController {
 		response.put("deleted", Boolean.TRUE);
 		
 		return response;
-		
+
 	}
 	
 	
