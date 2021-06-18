@@ -153,6 +153,23 @@ a {
             </div>
         </div>
     </div>
+
+    <br>
+    <div style="border-radius: 20px; background-color: #DCDCDC; padding: 10px;">
+        <h2 class="text-center">Testes</h2>
+        <div class="row" th:each="test : ${tests}" th:if="${test.id_player == joueur.id}">
+            <div class="col-md-6">
+                <h5 th:text="${test.date}"></h5>
+            </div>
+            <div class="col-md-6 text-right">
+                <a href="" class="btn btn-dark" style="float: right" th:href="@{/viewTest/{id}(id = ${test.id})}">Bulletin</a>
+            </div>
+            <hr>
+        </div>
+    </div>
+
+
+
 </div>
 <div id="wrapper">
     <button class="registerbtn"><a th:href="@{/list}">&lt; Retour</a></button>

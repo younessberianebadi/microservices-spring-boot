@@ -1,94 +1,135 @@
-package io.digiwise.frontendservice;
+package com.cubs_test.test.entities;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "test")
 
 public class Test {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(name = "date")
     private LocalDate date;
 
+    @Column(name = "id_player")
     private int id_player;
 
+    @Column(name = "comment")
     private String comment;
 
+    @Column(name = "confiance_en_soi")
     private float confiance_en_soi;
 
+    @Column(name = "gout_de_l_effort")
     private float gout_de_l_effort;
 
+    @Column(name = "concentration")
     private float concentration;
 
+    @Column(name = "application")
     private float application;
 
+    @Column(name = "joueur_equipier")
     private float joueur_equipier;
 
+    @Column(name = "orientation_du_corps")
     private float orientation_du_corps;
 
+    @Column(name = "jonglage")
     private float jonglage;
 
+    @Column(name = "conduite_de_balle")
     private float conduite_de_balle;
 
+    @Column(name = "dribbles_et_feintes")
     private float dribbles_et_feintes;
 
+    @Column(name = "protection_de_ballon")
     private float protection_de_ballon;
 
+    @Column(name = "premiere_touche")
     private float premiere_touche;
 
+    @Column(name = "controles_orientes")
     private float controles_orientes;
 
+    @Column(name = "controles_aeriens")
     private float controles_aeriens;
 
+    @Column(name = "passes_courtes")
     private float passes_courtes;
 
+    @Column(name = "passes_moyennes")
     private float passes_moyennes;
 
+    @Column(name = "passes_longues")
     private float passes_longues;
 
+    @Column(name = "centres")
     private float centres;
 
+    @Column(name = "volee")
     private float volee;
 
+    @Column(name = "tirs")
     private float tirs;
 
+    @Column(name = "jeu_de_tete")
     private float jeu_de_tete;
 
+    @Column(name = "pied_faible")
     private float pied_faible;
 
+    @Column(name = "x_1_vs_1")
     private float x_1_vs_1;
 
+    @Column(name = "vision_de_jeu")
     private float vision_de_jeu;
 
+    @Column(name = "creativite_et_prise_d_initiatives")
     private float creativite_et_prise_d_initiatives;
 
+    @Column(name = "placement")
     private float placement;
 
+    @Column(name = "deplacement")
     private float deplacement;
 
+    @Column(name = "attitude_a_la_perte_de_balle")
     private float attitude_a_la_perte_de_balle;
 
+    @Column(name = "mise_en_pratique_des_principes_de_zone")
     private float mise_en_pratique_des_principes_de_zone;
 
+    @Column(name = "anticipation")
     private float anticipation;
 
+    @Column(name = "replacement")
     private float replacement;
 
+    @Column(name = "motricite")
     private float motricite;
 
+    @Column(name = "vivacite")
     private float vivacite;
 
+    @Column(name = "vitesse")
     private float vitesse;
 
+    @Column(name = "endurance")
     private float endurance;
 
+    @Column(name = "puissance")
     private float puissance;
 
+    @Column(name = "souplesse")
     private float souplesse;
 
 
@@ -160,8 +201,8 @@ public class Test {
         return id_player;
     }
 
-    public void setId_player(int id_player) {
-        this.id_player = id_player;
+    public void setId_player(int player_id) {
+        this.id_player = player_id;
     }
 
     public float getConfiance_en_soi() {
@@ -459,51 +500,5 @@ public class Test {
 
     public void setComment(String comment) {
         this.comment = comment;
-    }
-
-    @Override
-    public String toString() {
-        return "Test{" +
-                "id=" + id +
-                ", date=" + date +
-                ", id_player=" + id_player +
-                ", comment='" + comment + '\'' +
-                ", confiance_en_soi=" + confiance_en_soi +
-                ", gout_de_l_effort=" + gout_de_l_effort +
-                ", concentration=" + concentration +
-                ", application=" + application +
-                ", joueur_equipier=" + joueur_equipier +
-                ", orientation_du_corps=" + orientation_du_corps +
-                ", jonglage=" + jonglage +
-                ", conduite_de_balle=" + conduite_de_balle +
-                ", dribbles_et_feintes=" + dribbles_et_feintes +
-                ", protection_de_ballon=" + protection_de_ballon +
-                ", premiere_touche=" + premiere_touche +
-                ", controles_orientes=" + controles_orientes +
-                ", controles_aeriens=" + controles_aeriens +
-                ", passes_courtes=" + passes_courtes +
-                ", passes_moyennes=" + passes_moyennes +
-                ", passes_longues=" + passes_longues +
-                ", centres=" + centres +
-                ", volee=" + volee +
-                ", tirs=" + tirs +
-                ", jeu_de_tete=" + jeu_de_tete +
-                ", pied_faible=" + pied_faible +
-                ", x_1_vs_1=" + x_1_vs_1 +
-                ", vision_de_jeu=" + vision_de_jeu +
-                ", creativite_et_prise_d_initiatives=" + creativite_et_prise_d_initiatives +
-                ", placement=" + placement +
-                ", deplacement=" + deplacement +
-                ", attitude_a_la_perte_de_balle=" + attitude_a_la_perte_de_balle +
-                ", mise_en_pratique_des_principes_de_zone=" + mise_en_pratique_des_principes_de_zone +
-                ", anticipation=" + anticipation +
-                ", replacement=" + replacement +
-                ", motricite=" + motricite +
-                ", vivacite=" + vivacite +
-                ", vitesse=" + vitesse +
-                ", endurance=" + endurance +
-                ", puissance=" + puissance +
-                ", souplesse=" + souplesse +
-                '}';
     }
 }

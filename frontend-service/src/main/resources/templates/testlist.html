@@ -71,26 +71,19 @@
         <tr>
             <th>Date</th>
             <th>Pour joueur</th>
-            <th>Type</th>
-            <th>Nom</th>
-            <th>R&eacute;sultat</th>
             <th>Commentaire</th>
+            <th>R&eacute;sultat</th>
         </tr>
         <tr th:each="test : ${tests}">
             <td th:text="${test.date}"></td>
-            <td th:text="${test.player_name}"></td>
-            <td th:text="${test.test_type}"></td>
-            <td th:text="${test.test_name}"></td>
-            <td th:text="${test.test_result}"></td>
+            <td><p th:each="player : ${players}" th:if="${test.id_player == player.id}" th:text="${player.prenom + ' ' + player.nom}"></p></td>
             <td th:text="${test.comment}"></td>
+            <td><a th:href="@{/viewTest/{id}(id = ${test.id})}">Bulletin &gt;&gt;</a></td>
+
         </tr>
     </table>
     <button class="registerbtn"><a th:href="@{/insertest}">Ajouter un test</a></button>
-    <div>
-        <p>QM: Qualit&eacute;s Mentales</p>
-        <p>HT: Habilet&eacute;s Techniques</p>
-        <p>QP: Qualités Physiques</p>
-    </div>
+
 
 </div>
 <div class="footer">

@@ -18,12 +18,13 @@ public class MainController {
 
     private static final String GET_ALL_PLAYERS_API = "http://localhost:8080/api/v1/joueurs";
     private static final String CREATE_PLAYER_API = "http://localhost:8080/api/v1/joueurs";
-    private static final String CREATE_ALL_MATCHES_API = "http://localhost:8084/Match";
+    private static final String GET_ALL_MATCHES_API = "http://localhost:8084/Match";
     private static final String CREATE_MATCH_API = "http://localhost:8084/Match";
     private static final String DELETE_PLAYER_API = "http://localhost:8080/api/v1/joueurs/{id}";
     private static final String GET_PLAYER_BY_ID_API = "http://localhost:8080/api/v1/joueurs/{id}";
-    private static final String CREATE_TEST_API = "http://localhost:8087/add_test";
-    private static final String GET_ALL_TESTS_API = "http://localhost:8087/get_tests";
+    private static final String CREATE_TEST_API = "http://localhost:8099/add_test";
+    private static final String GET_ALL_TESTS_API = "http://localhost:8099/tests";
+    private static final String GET_TEST_BY_ID = "http://localhost:8099/tests/{id}";
 
     static RestTemplate restTemplate = new RestTemplate();
 
@@ -49,6 +50,8 @@ public class MainController {
     public String testList(Model model) {
 
 
+        Joueur players[] = restTemplate.getForObject(GET_ALL_PLAYERS_API, Joueur[].class);
+        model.addAttribute("players", players);
         Test tests[] = restTemplate.getForObject(GET_ALL_TESTS_API, Test[].class);
         model.addAttribute("tests", tests);
 
@@ -60,7 +63,7 @@ public class MainController {
     @GetMapping("/fixtures")
     public String getFixtures(Model model) {
 
-        Match matches[] = restTemplate.getForObject(CREATE_ALL_MATCHES_API, Match[].class);
+        Match matches[] = restTemplate.getForObject(GET_ALL_MATCHES_API, Match[].class);
         model.addAttribute("matches", matches);
 
         return "matchcalendar"; //view
@@ -150,8 +153,32 @@ public class MainController {
         model.addAttribute("pos", Joueur.position.values());
         Joueur joueur = restTemplate.getForObject(GET_PLAYER_BY_ID_API, Joueur.class, params);
         model.addAttribute("joueur", joueur);
+        Test tests[] = restTemplate.getForObject(GET_ALL_TESTS_API, Test[].class);
+        model.addAttribute("tests", tests);
 
         return "viewprofile";
+    }
+
+    @GetMapping(value = "/viewTest/{id}")
+    public String viewTest(@PathVariable("id") Long testid, Model model){
+        Map < String, String > params = new HashMap < String, String > ();
+        params.put("id", testid.toString());
+        Test test = restTemplate.getForObject( GET_TEST_BY_ID, Test.class, params);
+
+        // Get player id to import its name from the player service
+        int idPlayer = test.getId_player();
+        Map < String, String > params2 = new HashMap < String, String > ();
+        String idplayerS = Integer.toString(idPlayer);
+        params2.put("id", idplayerS);
+
+        // Issue the get by id request to the player service
+        Joueur player = restTemplate.getForObject(GET_PLAYER_BY_ID_API, Joueur.class, params2);
+
+        // Get the attributes
+        model.addAttribute("test", test);
+        model.addAttribute("player", player);
+
+        return "bulletin";
     }
 
     @PostMapping(value = "/update/{id}")
@@ -209,7 +236,7 @@ public class MainController {
 
     @PostMapping(value = "/saveTest")
     public RedirectView saveTest(@ModelAttribute Test test){
-        // System.out.println(test);
+        System.out.println(test);
         test.setId(0L);
         System.out.println(test);
 
@@ -219,7 +246,7 @@ public class MainController {
 
     @PostMapping(value = "/save")
     public RedirectView insertPlayer(@ModelAttribute Joueur joueur){
-        System.out.println(joueur);
+        // System.out.println(joueur);
         joueur.setId(0L);
 
         ResponseEntity<Joueur> joueur1 = restTemplate.postForEntity(CREATE_PLAYER_API, joueur, Joueur.class);
